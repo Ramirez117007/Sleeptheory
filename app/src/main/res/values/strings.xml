@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">SleepTheory0.1</string>
+
+
+    <!--IMC App -->
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="age">Edad</string>
+    <string name="calculate">Calcular</string>
+    <string name="recalculate">Re-Calcular</string>
+    <string name="result">Tu resultado</string>
+
+    <string name="error">Error</string>
+
+    <string name="title_bajo_peso">Bajo peso</string>
+    <string name="description_bajo_peso">Estas por debajo de lo optimo para tu peso y altura.</string>
+
+    <string name="title_peso_normal">Normal</string>
+    <string name="description_peso_normal">Estas en lo optimo para tu peso y altura.</string>
+
+    <string name="title_sobrepeso">Sobrepeso</string>
+    <string name="description_sobrepeso">Estas por encima de lo optimo para tu peso y altura.</string>
+
+    <string name="title_obesidad">Obeso</string>
+    <string name="description_obesidad">Estas MUY por encima de lo optimo para tu peso y altura.</string>
+
+
+    <!--TODOApp -->
+    <string name="todo_title">Bitacora</string>
+    <string name="todo_categories">Categorias</string>
+    <string name="todo_tasks">Tareas</string>
+
+    <string name="todo_dialog_add_task">Añade la nota</string>
+    <string name="todo_dialog_category_business">Tratamiento de insomnio</string>
+    <string name="todo_dialog_category_personal">Animo</string>
+    <string name="todo_dialog_category_other">Otros</string>
+    <string name="todo_dialog_add_task_button">Añadir Nota</string>
+
+
+    <!--More -->
+    <string name="more_title">Que es el insomnio?</string>
+    <string name="acerca_title">Sleep Theory</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="random_phrases">
+        <item>"Deja que la noche borre el estrés del día."</item>
+        <item>"Relájate y deja que la calma te envuelva."</item>
+        <item>"Un respiro profundo es el comienzo del descanso."</item>
+        <item>"Hoy es una noche perfecta para desconectar."</item>
+        <item>"Cierra los ojos, respira hondo, y déjate llevar por la calma."</item>
+        <item>"El descanso es el regalo que tu cuerpo y mente merecen hoy."</item>
+        <item>"Apaga las preocupaciones del día; el sueño es tu refugio."</item>
+        <item>"Dormir bien es el primer paso para un día increíble."</item>
+        <item>"Cada respiro profundo te lleva más cerca de un descanso reparador."</item>
+        <item>"El sueño es la mejor forma de cuidar de ti mismo."</item>
+    </string-array>
+
+    <string-array name="random_exercises">
+        <item>"Acuéstate y despiértate a la misma hora todos los días, incluso los fines de semana."</item>
+        <item>"Crea un ritual antes de dormir, como leer un libro, tomar un baño tibio o practicar la meditación."</item>
+        <item>"Evita las comidas pesadas, picantes o ácidas antes de acostarte. Una merienda ligera puede ser beneficiosa."</item>
+        <item>"La actividad física regular puede ayudarte a dormir mejor, pero evita hacer ejercicio intenso justo antes de dormir."</item>
+        <item>"Si necesitas dormir durante el día, intenta que las siestas sean cortas (20-30 minutos) y no demasiado tarde."</item>
+        <item>"Evita el uso de dispositivos electrónicos como teléfonos, tabletas y computadoras al menos una hora antes de acostarte."</item>
+        <item>"Practica técnicas de relajación como la respiración profunda, el yoga o la escritura en un diario para reducir la ansiedad y el estrés."</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sleep_Theme"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DiagnosticoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diagnostico"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp"
+            />
+
+        <!-- Pregunta 1: Horas de sueño -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Cuántas horas duermes en promedio?"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSleepHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="Menos de 5 horas" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" />
+            <RadioButton android:text="5-7 horas" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" />
+            <RadioButton android:text="Más de 7 horas" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" />
+        </RadioGroup>
+
+        <!-- Pregunta 2: Despertar durante la noche -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Con qué frecuencia te despiertas durante la noche?"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupWakeFrequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="Muy frecuente" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" />
+            <RadioButton android:text="Poco frecuente" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:textColor="@color/white"/>
+            <RadioButton android:text="Rara vez" android:textSize="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" />
+        </RadioGroup>
+
+        <!-- Pregunta 3: Uso de dispositivos electrónicos -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="8dp"
+            android:text="¿Usas dispositivos electrónicos antes de dormir?"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupDeviceUsage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton android:text="Sí, regularmente" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="A veces"  android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="No, nunca"  android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <!-- Pregunta 4: Consumo de cafeína -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Consumes cafeína o estimulantes después de la tarde?"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupCaffeine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="Sí, regularmente" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="A veces" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="No, nunca" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <!-- Pregunta 5: Condiciones de la habitación -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Tu habitación está en condiciones óptimas para dormir (silencio, oscuridad, temperatura adecuada)?"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupRoomCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="Sí, siempre" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="A veces" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="No, nunca" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <!-- Pregunta 6: Estrés -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Sientes estrés o ansiedad al intentar dormir?"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupStress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="Sí, regularmente" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="A veces" android:textSize="18dp" android:textColor="@color/white"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RadioButton android:text="No, nunca" android:textSize="18dp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/sleep_buttons"
+            android:text="Enviar" />
+    </LinearLayout>
+
+</ScrollView>

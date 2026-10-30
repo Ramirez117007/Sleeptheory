@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/sleep_Theme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SonidoActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sonidos relajantes"
+        android:layout_margin="16dp"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+
+    <Button
+        android:id="@+id/btnPlayRain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:layout_marginTop="10dp"
+        android:text="Sonido de lluvia"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnPlayOcean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido de océano"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido blanco"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayBird"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:textColor="@color/white"
+        android:text="Sonido de naturaleza"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayNatural"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido de naturaleza 2"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayDS2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido de DS2"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayHalo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido de H3 ODST"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnPlayRE7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sleep_buttons"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        android:text="Sonido de RE7"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detener sonido"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

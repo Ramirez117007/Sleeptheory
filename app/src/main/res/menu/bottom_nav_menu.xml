@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item android:id="@+id/Diagnostico"
+        android:icon="@drawable/ic_heart"
+        android:title="Diagnostico" />
+    <item android:id="@+id/Bitacora"
+        android:icon="@drawable/ic_baseline_add_box_24"
+        android:title="Bitacora" />
+    <item android:id="@+id/More"
+        android:icon="@drawable/ic_ellipsis_icon_143097"
+        android:title="Mas" />
+</menu>

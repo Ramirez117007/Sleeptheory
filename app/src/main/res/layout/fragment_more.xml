@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoreFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Mas apartados"
+        />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="45dp"
+            android:backgroundTint="@color/sleep_buttons"
+            android:text="Que es el insomnio?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_interrogacion"
+            android:drawableTint="@color/white"
+            />
+
+      <!-- <Button
+        android:id="@+id/btnRemember"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/sleep_buttons"
+            android:layout_marginTop="45dp"
+            android:text="Recordatorios"
+            android:textSize="18sp"
+        android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_recordatorios"
+            android:drawableTint="@color/white"
+
+        /> -->
+
+    <Button
+        android:id="@+id/btnSounds"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/sleep_buttons"
+        android:layout_marginTop="45dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:text="Sonidos Relajantes"
+        android:drawableLeft="@drawable/ic_sonidos"
+        android:drawableTint="@color/white"
+        />
+
+    <Button
+        android:id="@+id/btnAcerca"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/sleep_buttons"
+        android:layout_marginTop="45dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:text="Acerca de nosotros"
+        android:drawableLeft="@drawable/ic_nosotros"
+        android:drawableTint="@color/white"
+        />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

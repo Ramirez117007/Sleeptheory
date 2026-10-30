@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sleep_Theme"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/white"
+            android:textSize="33sp"
+            android:textStyle="bold"
+            android:text="Sleep Theory" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/white"
+            android:text="Frase de la noche"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/phraseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:text="Tu frase aparecerá aquí" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aqui tienes sonidos relajantes"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="16dp" />
+
+        <Button
+            android:id="@+id/btnPlayBird2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/sleep_buttons"
+            android:drawableLeft="@drawable/ic_sonidos"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:text="Sonido de naturaleza"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnPlayNatural2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/sleep_buttons"
+            android:drawableLeft="@drawable/ic_sonidos"
+            android:drawableTint="@color/white"
+            android:text="Sonido de naturaleza 2"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detener sonido"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/white"
+            android:text="Consejo para dormir mejor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/randomPhraseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:text="Tu frase aparecerá aquí" />
+
+        <Button
+            android:id="@+id/btnChat"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="45dp"
+            android:backgroundTint="@color/sleep_buttons"
+            android:text="ChatBot"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:drawableTint="@color/white" />
+
+    </LinearLayout>
+
+</ScrollView>

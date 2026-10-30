@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sleep_Theme"
+    tools:context=".AcercaActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acerca_title"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuestra mision"
+                android:textSize="20sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="En Sleep Theory, estamos dedicados a mejorar la calidad del sueño de las personas en todo el mundo. Creemos que un buen descanso es fundamental para una vida saludable y productiva. Nuestra misión es proporcionar soluciones innovadoras y efectivas que ayuden a nuestros usuarios a dormir mejor y, en última instancia, vivir mejor."
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="159dp"
+                android:layout_marginVertical="8dp"
+                app:srcCompat="@drawable/sleep" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuestra historia"
+                android:textSize="20sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Sleep Theory nació de una pasión por el bienestar y la comprensión de la importancia de un buen sueño. Nuestro equipo de expertos en salud del sueño, desarrolladores tecnológicos y diseñadores se unieron para crear productos y servicios que realmente marcan la diferencia. Desde nuestros humildes comienzos, hemos crecido hasta convertirnos en un líder en la industria del sueño, siempre enfocados en la excelencia y la innovación."
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Nuestros Valores"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="- Innovación: Buscamos constantemente nuevas formas de mejorar la calidad del sueño mediante la investigación y el desarrollo."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="- Compromiso: Estamos comprometidos con el bienestar de nuestros usuarios y trabajamos incansablemente para ofrecer soluciones efectivas y accesibles."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="- Calidad: Nuestros productos y servicios están diseñados con los más altos estándares de calidad para garantizar que nuestros usuarios obtengan los mejores resultados."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="- Empatía: Entendemos que cada persona es única, por lo que ofrecemos soluciones personalizadas y apoyo continuo."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuestro Equipo"
+                android:textSize="20sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="El equipo de Sleep Theory está compuesto por profesionales apasionados y expertos en diversas disciplinas, incluyendo la medicina del sueño, la tecnología, y el diseño. Juntos, trabajamos para desarrollar productos innovadores y brindar un servicio excepcional a nuestros usuarios. Creemos en un enfoque colaborativo y en la importancia de escuchar a nuestros usuarios para mejorar continuamente."
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
