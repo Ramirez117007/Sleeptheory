@@ -1,9 +1,14 @@
 package com.example.sleeptheory01
 
+import android.Manifest
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
-import android.media.MediaPlayer
+import android.content.ServiceConnection
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
-import android.os.CountDownTimer
+import android.os.IBinder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +16,16 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import java.util.Locale
 import kotlin.random.Random
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MusicService.Listener {
 
-    private var mediaPlayer: MediaPlayer? = null
-    private var currentIndex = -1
-    private var shuffleOn = false
-    private var sleepTimer: CountDownTimer? = null
+    private var service: MusicService? = null
 
     private lateinit var playerContainer: LinearLayout
     private lateinit var tvSongTitle: TextView
@@ -29,16 +33,21 @@ class HomeFragment : Fragment() {
     private lateinit var btnPlayPause: ImageButton
     private lateinit var btnShuffle: ImageButton
 
-    private val allSounds: List<SoundItem> = listOf(
-        SoundItem("Sonido de lluvia", R.raw.rain),
-        SoundItem("Sonido de océano", R.raw.ocean),
-        SoundItem("Sonido blanco", R.raw.white),
-        SoundItem("Sonido de naturaleza", R.raw.bird),
-        SoundItem("Sonido de naturaleza 2", R.raw.natural),
-        SoundItem("Sonido de DS2", R.raw.ds2),
-        SoundItem("Sonido de H3 ODST", R.raw.halo),
-        SoundItem("Sonido de RE7", R.raw.re7)
-    )
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
+
+    private val connection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
+            val s = (binder as MusicService.LocalBinder).getService()
+            s.listener = this@HomeFragment
+            service = s
+            refreshUi()
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            service = null
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,23 +75,70 @@ class HomeFragment : Fragment() {
 
         btnRefresh.setOnClickListener { setupRandomSounds(inflater, soundsContainer, 2) }
         btnChat.setOnClickListener { navigateToChat() }
-        btnStop.setOnClickListener { stopPlayback() }
+        btnStop.setOnClickListener { service?.stopPlayback() }
 
-        btnPlayPause.setOnClickListener { togglePlayPause() }
-        btnNext.setOnClickListener { playNext() }
-        btnPrevious.setOnClickListener { playPrevious() }
-        btnShuffle.setOnClickListener { toggleShuffle() }
+        btnPlayPause.setOnClickListener { service?.togglePlayPause() }
+        btnNext.setOnClickListener { service?.playNext() }
+        btnPrevious.setOnClickListener { service?.playPrevious() }
+        btnShuffle.setOnClickListener { service?.toggleShuffle() }
         btnTimer.setOnClickListener { showTimerDialog() }
 
         return view
     }
 
+    // ---------- Conexión con el servicio ----------
+
+    override fun onStart() {
+        super.onStart()
+        val ctx = requireContext().applicationContext
+        ctx.bindService(Intent(ctx, MusicService::class.java), connection, Context.BIND_AUTO_CREATE)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        service?.listener = null
+        service = null
+        requireContext().applicationContext.unbindService(connection)
+    }
+
+    override fun onPlaybackChanged() = refreshUi()
+
+    override fun onTimerTick(remainingMs: Long) {
+        if (remainingMs < 0) {
+            tvTimer.visibility = View.GONE
+        } else {
+            val m = remainingMs / 60_000
+            val s = (remainingMs / 1000) % 60
+            tvTimer.text = String.format(Locale.getDefault(), "Se apaga en %02d:%02d", m, s)
+            tvTimer.visibility = View.VISIBLE
+        }
+    }
+
+    private fun refreshUi() {
+        val s = service ?: return
+        if (!s.hasSong) {
+            playerContainer.visibility = View.GONE
+            tvTimer.visibility = View.GONE
+            return
+        }
+        playerContainer.visibility = View.VISIBLE
+        tvSongTitle.text = SoundLibrary.sounds[s.currentIndex].name
+        btnPlayPause.setImageResource(if (s.isPlaying) R.drawable.ic_pause else R.drawable.ic_play)
+        btnShuffle.alpha = if (s.shuffleOn) 1f else 0.5f
+        onTimerTick(s.timerRemainingMs)
+    }
+
+    // ---------- Interfaz ----------
+
     private fun setupRandomSounds(inflater: LayoutInflater, container: LinearLayout, count: Int) {
         container.removeAllViews()
-        allSounds.shuffled().take(count).forEach { sound ->
+        SoundLibrary.sounds.shuffled().take(count).forEach { sound ->
             val button = inflater.inflate(R.layout.item_sound_button, container, false) as Button
             button.text = sound.name
-            button.setOnClickListener { playSongAt(allSounds.indexOf(sound)) }
+            button.setOnClickListener {
+                askNotificationPermission()
+                service?.play(SoundLibrary.sounds.indexOf(sound))
+            }
             container.addView(button)
         }
     }
@@ -92,69 +148,15 @@ class HomeFragment : Fragment() {
         textView.text = phrases[Random.nextInt(phrases.size)]
     }
 
-    // ---------- Reproductor ----------
-
-    private fun playSongAt(index: Int) {
-        releasePlayer()
-        currentIndex = index
-        val song = allSounds[index]
-        mediaPlayer = MediaPlayer.create(requireContext(), song.resId)?.apply {
-            setOnCompletionListener { playNext() }
-            start()
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
-        tvSongTitle.text = song.name
-        playerContainer.visibility = View.VISIBLE
-        updatePlayPauseIcon()
     }
-
-    private fun playNext() {
-        if (allSounds.isEmpty()) return
-        val next = if (shuffleOn && allSounds.size > 1) {
-            var random: Int
-            do {
-                random = Random.nextInt(allSounds.size)
-            } while (random == currentIndex)
-            random
-        } else {
-            (currentIndex + 1) % allSounds.size
-        }
-        playSongAt(next)
-    }
-
-    private fun playPrevious() {
-        if (allSounds.isEmpty()) return
-        val previous = if (currentIndex <= 0) allSounds.size - 1 else currentIndex - 1
-        playSongAt(previous)
-    }
-
-    private fun togglePlayPause() {
-        val player = mediaPlayer ?: return
-        if (player.isPlaying) player.pause() else player.start()
-        updatePlayPauseIcon()
-    }
-
-    private fun updatePlayPauseIcon() {
-        val playing = mediaPlayer?.isPlaying == true
-        btnPlayPause.setImageResource(if (playing) R.drawable.ic_pause else R.drawable.ic_play)
-    }
-
-    private fun toggleShuffle() {
-        shuffleOn = !shuffleOn
-        btnShuffle.alpha = if (shuffleOn) 1f else 0.5f
-    }
-
-    private fun stopPlayback() {
-        releasePlayer()
-        cancelTimer()
-        playerContainer.visibility = View.GONE
-    }
-
-    private fun releasePlayer() {
-        mediaPlayer?.release()
-        mediaPlayer = null
-    }
-
-    // ---------- Temporizador ----------
 
     private fun showTimerDialog() {
         val options = arrayOf("15 minutos", "30 minutos", "60 minutos", "Cancelar temporizador")
@@ -162,40 +164,9 @@ class HomeFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle("Apagar música en…")
             .setItems(options) { _, which ->
-                if (minutes[which] == 0) cancelTimer() else startTimer(minutes[which])
+                if (minutes[which] == 0) service?.cancelTimer() else service?.startTimer(minutes[which])
             }
             .show()
-    }
-
-    private fun startTimer(minutes: Int) {
-        cancelTimer()
-        tvTimer.visibility = View.VISIBLE
-        sleepTimer = object : CountDownTimer(minutes * 60_000L, 1000L) {
-            override fun onTick(millisUntilFinished: Long) {
-                val m = millisUntilFinished / 60_000
-                val s = (millisUntilFinished / 1000) % 60
-                tvTimer.text = String.format(Locale.getDefault(), "Se apaga en %02d:%02d", m, s)
-            }
-
-            override fun onFinish() {
-                stopPlayback()
-            }
-        }.start()
-    }
-
-    private fun cancelTimer() {
-        sleepTimer?.cancel()
-        sleepTimer = null
-        tvTimer.visibility = View.GONE
-    }
-
-    // ---------- Ciclo de vida ----------
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        sleepTimer?.cancel()
-        sleepTimer = null
-        releasePlayer()
     }
 
     private fun navigateToChat() {
