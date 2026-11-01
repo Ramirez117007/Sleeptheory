@@ -57,12 +57,14 @@
             android:orientation="vertical" />
 
         <Button
+            android:text="Otras sugerencias"
             android:id="@+id/btnRefreshSounds"
+            android:backgroundTint="@color/sleep_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:minHeight="56dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/sleep_buttons"
-            android:text="Otras sugerencias"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -70,6 +72,8 @@
             android:id="@+id/btnStop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:minHeight="56dp"
             android:text="Detener sonido"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -98,10 +102,12 @@
         <Button
             android:id="@+id/btnChat"
             android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:minHeight="56dp"
             android:layout_height="55dp"
             android:layout_marginTop="45dp"
             android:backgroundTint="@color/sleep_buttons"
-            android:text="ChatBot"
+            android:text="Chat bot"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:drawableTint="@color/white" />

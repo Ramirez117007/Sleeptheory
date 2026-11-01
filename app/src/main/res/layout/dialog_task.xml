@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/etTask"
         android:layout_width="match_parent"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/sleep_buttons"
         android:hint="@string/todo_dialog_add_task"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

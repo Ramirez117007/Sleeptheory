@@ -67,9 +67,10 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:text="@string/recalculate"
+        android:layout_marginHorizontal="16dp"
+        android:minHeight="56dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/sleep_buttons"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
