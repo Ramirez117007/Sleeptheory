@@ -68,6 +68,92 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
 
+        <LinearLayout
+            android:id="@+id/playerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_player"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvSongTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Canción"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnShuffle"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:alpha="0.5"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Aleatorio"
+                    android:src="@drawable/ic_shuffle" />
+
+                <ImageButton
+                    android:id="@+id/btnPrevious"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Anterior"
+                    android:src="@drawable/ic_skip_previous" />
+
+                <ImageButton
+                    android:id="@+id/btnPlayPause"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Reproducir o pausar"
+                    android:src="@drawable/ic_pause" />
+
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Siguiente"
+                    android:src="@drawable/ic_skip_next" />
+
+                <ImageButton
+                    android:id="@+id/btnTimer"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Temporizador"
+                    android:src="@drawable/ic_timer" />
+            </LinearLayout>
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnStop"
             android:layout_width="match_parent"

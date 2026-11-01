@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/sleep_Theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sleep_Theme"
     tools:context=".startActivity">
-
 
     <FrameLayout
         android:id="@+id/frame_layout"
@@ -16,22 +15,23 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="46dp"
+        android:background="@color/sleep_buttons"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:labelVisibilityMode="selected"
+        app:paddingBottomSystemWindowInsets="false"
+        app:itemPaddingTop="8dp"
+        app:itemPaddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemTextColor="@color/white"
-        android:background="@color/sleep_buttons"
-        >
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
