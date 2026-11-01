@@ -25,11 +25,7 @@ class BitacoraFragment : Fragment() {
         Other
     )
 
-    private val tasks = mutableListOf(
-        Task("PruebaBussiness", Bussiness, "viernes, diciembre 13, 2024"),
-        Task("PruebaPersonal", Personal, "viernes, diciembre 13, 2024"),
-        Task("PruebaOther", Other, "viernes, diciembre 13, 2024")
-    )
+    private lateinit var tasks: MutableList<Task>
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var categoriesAdapter: CategoriesAdapter
@@ -43,13 +39,13 @@ class BitacoraFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bitacora, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initComponent(view) // Pasamos el `view` inflado
+        tasks = TaskStorage.load(requireContext())
+        initComponent(view)
         initUI()
         initListeners()
     }
@@ -59,7 +55,7 @@ class BitacoraFragment : Fragment() {
     }
 
     private fun showDialog() {
-        val dialog = Dialog(requireContext()) // Usamos el contexto del Fragment
+        val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.dialog_task)
 
         val btnAddTask: Button = dialog.findViewById(R.id.btnAddTask)
@@ -67,22 +63,25 @@ class BitacoraFragment : Fragment() {
         val rgCategories: RadioGroup = dialog.findViewById(R.id.rgCategories)
 
         btnAddTask.setOnClickListener {
-            val currentTask = etTask.text.toString()
+            val currentTask = etTask.text.toString().trim()
             if (currentTask.isNotEmpty()) {
                 val selectedId = rgCategories.checkedRadioButtonId
-                val selectedRadioButton: RadioButton = rgCategories.findViewById(selectedId)
-                val currentCategory: TaskCategory = when (selectedRadioButton.text) {
-                    getString(R.string.todo_dialog_category_business) -> Bussiness
-                    getString(R.string.todo_dialog_category_personal) -> Personal
-                    else -> Other
+                val currentCategory: TaskCategory = if (selectedId == -1) {
+                    Other
+                } else {
+                    val selectedRadioButton: RadioButton = rgCategories.findViewById(selectedId)
+                    when (selectedRadioButton.text.toString()) {
+                        getString(R.string.todo_dialog_category_business) -> Bussiness
+                        getString(R.string.todo_dialog_category_personal) -> Personal
+                        else -> Other
+                    }
                 }
 
-                val date: Date = Date()
-                val formatter: SimpleDateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy")
-                val formattedDate: String = formatter.format(date)
+                val formattedDate = SimpleDateFormat("EEEE, MMMM dd, yyyy").format(Date())
                 tasks.add(Task(currentTask, currentCategory, formattedDate))
+                TaskStorage.save(requireContext(), tasks)
                 updateTasks()
-                dialog.dismiss() // Usamos dismiss para cerrar el diálogo
+                dialog.dismiss()
             }
         }
 
@@ -90,23 +89,29 @@ class BitacoraFragment : Fragment() {
     }
 
     private fun initComponent(view: View) {
-        rvCategories = view.findViewById(R.id.rvCategories) // Usamos `view.findViewById`
+        rvCategories = view.findViewById(R.id.rvCategories)
         rvTasks = view.findViewById(R.id.rvTasks)
         fabAddTask = view.findViewById(R.id.fabAddTask)
     }
 
     private fun initUI() {
         categoriesAdapter = CategoriesAdapter(categories) { position -> updateCategories(position) }
-        rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        rvCategories.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
 
         tasksAdapter = TasksAdapter(tasks) { position -> onItemSelected(position) }
         rvTasks.layoutManager = LinearLayoutManager(requireContext())
         rvTasks.adapter = tasksAdapter
+
+        updateTasks()
     }
 
     private fun onItemSelected(position: Int) {
-        tasks[position].isSelected = !tasks[position].isSelected
+        // La posición es de la lista que se está mostrando (ya filtrada)
+        val task = tasksAdapter.tasks[position]
+        task.isSelected = !task.isSelected
+        TaskStorage.save(requireContext(), tasks)
         updateTasks()
     }
 
